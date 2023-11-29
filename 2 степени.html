@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="A page for exploring basic HTML documents">
+    <title>Степени двойки</title>
+    <style>
+        .input-style {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #555;
+            outline: none;
+        }
+
+        .input-style:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        button {
+            font-size: 16px;
+            padding: 1em 3.3em;
+            transform: perspective(200px) rotateX(15deg);
+            color: white;
+            font-weight: 900;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(0deg, rgba(63,94,251,1) 0%, rgba(70,135,252,1) 100%);
+            box-shadow: rgba(63,94,251,0.2) 0px 40px 29px 0px;
+            will-change: transform;
+            transition: all 0.3s;
+            border-bottom: 2px solid rgba(70,135,252,1);
+        }
+
+        button:hover {
+            transform: perspective(180px) rotateX(30deg) translateY(2px);
+        }
+
+        button:active {
+            transform: perspective(170px) rotateX(36deg) translateY(5px);
+        }
+    </style>
+</head>
+<body>
+<h1 id="question"></h1>
+<div class="form-control">
+    <input placeholder="X =" class="input-style" type="text" id="answer">
+</div>
+<button onclick="checkAnswer()">Ответить</button>
+<h1 id="result"></h1>
+<script>
+    var gen = Math.floor(Math.random() * 11);
+    console.log(gen);
+    var questionElement = document.getElementById("question");
+    questionElement.textContent = "2 в X степени = " + Math.pow(2, gen);
+
+    function checkAnswer() {
+        var answerElement = document.getElementById("answer");
+        var resultElement = document.getElementById("result");
+        var pon = parseInt(answerElement.value);
+        if (pon === gen){
+            resultElement.textContent = "ПРАВИЛЬНО";
+            setTimeout(function(){
+                location.reload();
+            }, 3000);
+        } else {
+            resultElement.textContent = "НЕ ПРАВИЛЬНО";
+            setTimeout(function(){
+                location.reload();
+            }, 3000);
+
+        }
+    }
+
+    function setNumber(newVal) {
+        gen = newVal;
+        console.log(gen);
+        var questionElement = document.getElementById("question");
+        questionElement.textContent = "2 в X степени = " + Math.pow(2, gen);
+        if(questionElement.textContent === "Infinity"){
+            questionElement.textContent = "ТЫ ОПИСАЛСЯ";
+        }
+    }
+</script>
+</body>
+</html>
