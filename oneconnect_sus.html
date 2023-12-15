@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="css.css">
+    <script>
+        function generateRandomData() {
+            var letters = 'abcdefghijklmnopqrstuvwxyz';
+            var randomData = '';
+            for (var i = 0; i < 16; i++) {
+                var randomIndex = Math.floor(Math.random() * letters.length);
+                randomData += letters[randomIndex];
+            }
+            document.getElementById('post').value = randomData;
+        }
+
+
+        // Call the generateRandomData() function on page load
+        window.onload = function() {
+            generateRandomData();
+        };
+    </script>
+</head>
+<body>
+<form action="http://y982994n.beget.tech/user.php?id=1" method="post">
+    <textarea name="post" id="post"></textarea>
+    <button type="submit" name="do_post">Опубликовать</button>
+</form>
+</body>
+</html>
